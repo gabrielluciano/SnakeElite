@@ -6,5 +6,5 @@ class EntityController(ABC):
         pass
 
     @abstractmethod
-    def update_entity_position(self, dt, screen):
+    def update(self, dt):
         pass

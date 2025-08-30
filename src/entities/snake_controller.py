@@ -1,5 +1,5 @@
 import pygame
-from src.core.constants import SNAKE_COLOR, Direction
+from src.core.constants import Direction
 from src.entities.entity_controller import EntityController
 
 class SnakeController(EntityController):
@@ -18,7 +18,7 @@ class SnakeController(EntityController):
             elif event.key == pygame.K_d:
                 self.direction = Direction.RIGHT
 
-    def update_entity_position(self, dt, screen):
+    def update(self, dt):
         keys = pygame.key.get_pressed()
 
         fast = (keys[pygame.K_w] and self.direction == Direction.UP) or \
@@ -28,5 +28,5 @@ class SnakeController(EntityController):
 
         self.snake.move(dt, fast, self.direction)
 
-        for snake_part in self.snake:
-            pygame.draw.rect(screen, SNAKE_COLOR, snake_part.get_coordinates())
+    def check_collision(self):
+        return self.snake.check_self_collision()
