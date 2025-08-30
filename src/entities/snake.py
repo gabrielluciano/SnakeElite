@@ -58,7 +58,19 @@ class Snake:
         head = self.body[0]
         x, y = self.offsets[direction]
 
-        self.body[0].set_position(head.rect.x + x, head.rect.y + y)
+        new_x = head.rect.x + x
+        new_y = head.rect.y + y
+
+        if new_x >= WINDOW_WIDTH:
+            new_x = 0
+        elif new_x < 0 - CELL_SIZE:
+            new_x = WINDOW_WIDTH - CELL_SIZE
+
+        if new_y >= WINDOW_HEIGHT:
+            new_y = 0
+        elif new_y < 0 - CELL_SIZE:
+            new_y = WINDOW_HEIGHT - CELL_SIZE
+        self.body[0].set_position(new_x, new_y)
         self.last_direction = direction
 
     def _is_reverse(self, direction):
@@ -74,6 +86,10 @@ class Snake:
         head = self.body[0]
         hits = pygame.sprite.spritecollide(head, self.body, False)
         return len(hits) > 1
+
+    def check_collision(self, sprite):
+        head = self.body[0]
+        return pygame.sprite.collide_mask(head, sprite)
 
     def __iter__(self):
         return iter(self.body)

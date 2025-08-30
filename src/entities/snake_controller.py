@@ -30,3 +30,6 @@ class SnakeController(EntityController):
 
     def check_collision(self):
         return self.snake.check_self_collision()
+    
+    def check_food_collision(self, food):
+        return self.snake.check_collision(food)
