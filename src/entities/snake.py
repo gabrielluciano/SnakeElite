@@ -7,6 +7,7 @@ class SnakePart(pygame.sprite.Sprite):
         self.image = pygame.Surface((CELL_SIZE, CELL_SIZE))
         self.image.fill(SNAKE_COLOR)
         self.rect = self.image.get_rect(topleft=(x, y))
+        self.mask = pygame.mask.from_surface(self.image)
 
     def set_position(self, x, y):
         self.rect.topleft = (x, y)
