@@ -26,7 +26,7 @@ class GameScene(Scene):
             for segment in self.snake.body:
                 self.all_sprites.add(segment)
         else:
-            self.snake = Snake(self.all_sprites, INITIAL_SNAKE_LENGTH)
+            self.snake = EntityFactory.create_entity("Snake", sprite_group=self.all_sprites, initial_length=INITIAL_SNAKE_LENGTH)
             
         self.snake_controller = SnakeController(self.snake)
         self.monster_controller = MonsterController(self.all_sprites)

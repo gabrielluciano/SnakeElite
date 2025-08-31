@@ -45,7 +45,7 @@ class ScoreboardScene(Scene):
         screen.blit(title_text, title_rect)
         
         for i, (name, score, timestamp) in enumerate(self.scores[self.scroll_offset:self.scroll_offset + 10]):
-            score_entry = f"{i+1+self.scroll_offset}. {name}: {score}"
+            score_entry = f"{i+1+self.scroll_offset}. {name}: {score} - Time: {timestamp}"
             score_text = self.score_font.render(score_entry, True, SCORE_COLOR)
             score_rect = score_text.get_rect(midleft=(100, 200 + i * 40))
             screen.blit(score_text, score_rect)

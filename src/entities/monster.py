@@ -20,11 +20,10 @@ class Monster(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=(x, y))
         
     def update(self, dt):
-        # Move left based on speed and delta time
         self.rect.x -= MONSTER_SPEED * dt
         
     def is_off_screen(self):
-        return self.rect.right < 0  # True if monster has completely left the screen
+        return self.rect.right < 0
         
     @staticmethod
     def generate_random_y():

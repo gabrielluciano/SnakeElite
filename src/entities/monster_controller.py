@@ -9,7 +9,7 @@ class MonsterController(EntityController):
         self.sprite_group = sprite_group
         self.num_monsters = num_monsters
         self.monsters = []
-        self.spawn_delay = 2  # seconds between monster spawns
+        self.spawn_delay = 2
         self.time_since_last_spawn = 0
         self.current_level = 1
         
@@ -31,20 +31,17 @@ class MonsterController(EntityController):
         # Update spawn timer
         self.time_since_last_spawn += dt
         
-        # Check if it's time to spawn a new monster
         if self.time_since_last_spawn >= self.spawn_delay:
             self.spawn_monster()
             self.time_since_last_spawn = 0
             
-        # Update monsters and remove those that are off screen
-        for monster in self.monsters[:]:  # Create a copy to safely remove while iterating
+        for monster in self.monsters[:]:
             monster.update(dt)
             if monster.is_off_screen():
-                monster.kill()  # Remove from sprite group
+                monster.kill()
                 self.monsters.remove(monster)
                 
     def check_snake_collision(self, snake):
-        # Optional: Check for collisions with snake segments
         for monster in self.monsters:
             for segment in snake.body:
                 if pygame.sprite.collide_mask(monster, segment):
