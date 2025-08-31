@@ -6,3 +6,6 @@ __pycache__/
 env/
 venv/
 scoreboard.db
+main.spec
+build/
+dist/

@@ -30,7 +30,7 @@ LEVEL_THRESHOLDS = [0, 50, 100, 150]  # Score needed to reach level 1, 2, 3, 4
 
 # Score
 SCORE_FONT_SIZE = 36
-SCORE_COLOR = (255, 255, 255)
+SCORE_COLOR = (0, 0, 0)
 SCORE_POSITION = (10, 10)
 SCORE_INCREMENT = 10
 
